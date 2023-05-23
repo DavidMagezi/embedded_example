@@ -69,9 +69,9 @@ fi
 channel=0 # 5900
 $qemu -machine raspi3b \
     -cpu cortex-a72 \
-    -dtb /mnt/test/bcm2710-rpi-3-b-plus.dtb \
+    -dtb $mount_path/bcm2710-rpi-3-b-plus.dtb \
     -m 1G -smp 4 -serial stdio \
-    -kernel /mnt/test/kernel8.img \
+    -kernel $mount_path/kernel8.img \
     -sd ./$resized_image \
     -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootdelay=1" \
     -vnc=$channel
