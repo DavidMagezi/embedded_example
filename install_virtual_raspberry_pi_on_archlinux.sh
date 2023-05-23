@@ -9,10 +9,8 @@ neededPackages="$qemu qemu-img git $compression_extension tigervnc" #virt-viewer
 echo "Checking needed packages: "
 pacman -Q $neededPackages || sudo pacman -S --needed $neededPackages
 
-last_raspberry_update=2023-05-03
-image_extension=img
-os_flavor=raspios-bullseye-armhf
-raspberry_stem=${last_raspberry_update}-$os_flavor
+source ./raspberry_details.sh
+
 raspberry_img=$raspberry_stem.$image_extension
 raspberry_archive=$raspberry_img.$compression_extension
 raspberry_website=raspberrypi.org
@@ -45,14 +43,11 @@ offset=$(($sector_size*$start_sector))
 
 echo $offset
 
-resized_image=$raspberry_stem-resize.$image_extension
 if [ ! -f $resized_image ]; then
     cp ./$raspberry_img ./$resized_image
     qemu-img resize $resized_image 8G
 fi
 
-mount_destination=raspios
-mount_path=/mnt/$mount_destination
 echo $mount_path 
 if [ ! -d $mount_path ]; then
     sudo mkdir $mount_path
