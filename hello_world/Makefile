@@ -1,9 +1,9 @@
-CXX = aarch64-linux-gnu-g++
-CFLAGS = -Wall -std=c++17 #$(SIZEOPT)
+CXX = g++
+CFLAGS = -mcpu=cortex-a53 -Wall -std=c++17 
 OBJ_EXT=.o
 CPP_EXT=.cpp
 
-TARGET = hello_world
+TARGET = hello_world_executable
 
 all: $(TARGET)
 

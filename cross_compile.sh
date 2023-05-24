@@ -8,4 +8,4 @@ $cross_compiler --version
 
 hello_world_dir='hello_world'
 cd $hello_world_dir
-make 
+# option here of cross-compiling
