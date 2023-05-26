@@ -10,6 +10,8 @@ echo "Checking needed packages: "
 pacman -Q $neededPackages || sudo pacman -S --needed $neededPackages
 
 source ./raspberry_details.sh
+source ./run_virtual_machine.sh
+source ./set_up_networking_bridge.sh
 
 raspberry_img=$raspberry_stem.$image_extension
 raspberry_archive=$raspberry_img.$compression_extension
@@ -61,16 +63,8 @@ if [ ! -f $user_created_file ]; then
     sudo mv $user_configure_file $mount_path
 fi
 
-channel=0 # 5900
-$qemu -machine raspi3b \
-    -cpu cortex-a72 \
-    -dtb $mount_path/bcm2710-rpi-3-b-plus.dtb \
-    -m 1G -smp 4 -serial stdio \
-    -kernel $mount_path/kernel8.img \
-    -sd ./$resized_image \
-    -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootdelay=1" \
-    -vnc=$channel
-
+set_up_networking_bridge
+run_virtual_machine $qemu $mount_path $resized_image
 read -p "Press enter to end installation session"
 
 if [ -d $mount_path ]; then
