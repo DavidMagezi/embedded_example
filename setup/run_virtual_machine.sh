@@ -13,6 +13,6 @@ function run_virtual_machine {
         -kernel $mount_path/kernel8.img \
         -drive "file=$resized_image,if=sd,format=raw" \
         -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootdelay=1" \
-        -netdev tap,helper=$helper_path,id=hn0 \ # or as an alternative: -netdev bridge,br=br0,id=hn0 \
-        -device usb-net,netdev=hn0,id=nic1=br0,id=hn0 \
+        -netdev tap,helper=$helper_path,id=hn0 \ # or as an alternative: -netdev bridge,br=br0,id=hn0,helper=$helper_path \
+        -device usb-net,netdev=hn0 \
     }
