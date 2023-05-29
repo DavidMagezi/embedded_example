@@ -29,3 +29,8 @@ function setup_networking_bridge {
         sudo netctl start $bridge_profile
     fi
 }
+
+#On Virtual machine:
+#use ls /sys/class/net to find interfaces
+#add (eg. usb0) to /etc/network/interfaces
+#sudo ifconfig usb0 up #Note that ifup or #ifdown alone is insufficient

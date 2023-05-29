@@ -5,7 +5,7 @@
 
 qemu=qemu-system-aarch64
 compression_extension=xz
-neededPackages="$qemu qemu-img git $compression_extension tigervnc" #virt-viewer virt-install libvirt 
+neededPackages="$qemu qemu-img git $compression_extension" #tigervnc virt-viewer virt-install libvirt 
 echo "Checking needed packages: "
 pacman -Q $neededPackages || sudo pacman -S --needed $neededPackages
 
@@ -47,7 +47,7 @@ echo $offset
 
 if [ ! -f $resized_image ]; then
     cp ./$raspberry_img ./$resized_image
-    qemu-img resize $resized_image 8G
+    qemu-img resize $resized_image -f raw 16G
 fi
 
 echo $mount_path 
@@ -65,6 +65,7 @@ fi
 
 set_up_networking_bridge
 run_virtual_machine $qemu $mount_path $resized_image
+
 read -p "Press enter to end installation session"
 
 if [ -d $mount_path ]; then
