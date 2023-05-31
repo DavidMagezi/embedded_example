@@ -1,4 +1,5 @@
-DLIB_DIR = /home/$(USER)/local/dlib/source/dlib-19.24
+DLIB_DIR = /home/$(USER)/local/dlib/source/dlib-19.24 #change to where you downloaded d-lib
+
 CXX = g++
 CFLAGS = -O3 -lpthread -lX11 -std=c++11 -I$(DLIB_DIR)
 OBJ_EXT = .o
