@@ -1,1 +1,3 @@
 setup/machine_learning/host/my_example_dlib_program
+train_on_host/bin
+train_on_host/objs
