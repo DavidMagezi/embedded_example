@@ -1,9 +1,13 @@
 // Copyright (2023) David A. Magezi
 
+#include <filesystem>
+#include <string>
+
 #include "machine_learning/my_logger.h"
 #include "machine_learning/my_mnist.h"
 
 int main(int argc, char** argv) {
+    MyLogger::set_levels(); // comment out to suppress output
     MyLogger::display_test_message();
     if (argc != 2){
         MyLogger::display_error_message(argv[0]);
@@ -18,7 +22,17 @@ int main(int argc, char** argv) {
     }
 
     MyMNIST my_mnist(argv[1]);
-    my_mnist.train();
+    my_mnist.load_data();
+    std::string model_filename = "mnist_network.dat";
+
+    if (!std::filesystem::exists(model_filename)){
+        my_mnist.train(model_filename);
+    } else { 
+        my_mnist.load_model(model_filename);
+    }
+
+    my_mnist.pseudovalidate();
+    my_mnist.test();
 
     return 0;
 }

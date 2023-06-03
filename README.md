@@ -11,5 +11,5 @@ First install and set up the virtual machine, for example using one of the metho
 Where possible, it is often recommended to train machine-learning models on a standard PC (with sufficient RAM and a GPU), and then deploy the trained model on the embedded machine. The code in [setup/machine\_learning/host](setup/machine\_learning/host) will install and test [DLIB](http://dlib.net),  a C++ machine-learning library on the host. 
 
 # Next step: Train model on host
-Currently work in progress (see [train\_on\_host](train_on_host)).
+A model based on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) can be trained on the host (see [train\_on\_host](train_on_host)).
 

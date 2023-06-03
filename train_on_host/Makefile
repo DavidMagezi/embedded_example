@@ -4,7 +4,7 @@ DLIB_DIR = $(LOCAL_DIR)/dlib/source/dlib-19.24
 MNIST_DIR = $(LOCAL_DIR)/mnist 
 
 CXX = g++
-CFLAGS = -O3 -lpthread -lX11 -std=c++11 -I$(DLIB_DIR)
+CFLAGS = -O3 -lpthread -lX11 -std=c++17 -I$(DLIB_DIR)
 OBJ_EXT = .o
 CPP_EXT =.cpp
 

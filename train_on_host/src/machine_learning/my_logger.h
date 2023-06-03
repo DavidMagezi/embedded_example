@@ -11,9 +11,13 @@ class MyLogger{
 public:
     static void display_test_message();
     static void display_error_message(std::string error);
+    static void display_results_message(std::string results);
+    static void set_levels();
 
 private:
-    dlib::logger error_log_,example_log_;
+    static dlib::logger error_log_;
+    static dlib::logger example_log_;
+    static dlib::logger results_log_;
 };
 
 #endif //DEF_MY_LOGGER
