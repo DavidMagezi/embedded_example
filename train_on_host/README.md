@@ -1,7 +1,6 @@
 # Train on host 
-Once [dlib](http://dlib.net) has been installed and the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) has been downloaded (see [setup](setup)), a model can be trained on the host.
-## Classification task 
-The MNIST dataset comprises images of handwritten digits. A model based on the [examplconvolutional neural network in dlib](http://dlib.net/dnn_introduction_ex.cpp.html) shall be trained.
+Once [dlib](http://dlib.net) has been installed and the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) has been downloaded (see [setup](/embedded_example/setup)), we can build a model to classify handwritted digits (for more information, see the [wikipedia entry](https://en.wikipedia.org/wiki/MNIST_databse)).  The code here is based on the [example convolutional neural network](http://dlib.net/dnn_introduction_ex.cpp.html). 
+
 ## Usage
 First build with the name of the directory where dlib is installed 
 ```BASH 
