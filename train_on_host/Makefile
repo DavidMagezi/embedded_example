@@ -1,4 +1,7 @@
-DLIB_DIR = /home/$(USER)/local/dlib/source/dlib-19.24 #change to where you downloaded d-lib
+#change DLIB_DIR to where you downloaded d-lib
+LOCAL_DIR = /home/$(USER)/local
+DLIB_DIR = $(LOCAL_DIR)/dlib/source/dlib-19.24
+MNIST_DIR = $(LOCAL_DIR)/mnist 
 
 CXX = g++
 CFLAGS = -O3 -lpthread -lX11 -std=c++11 -I$(DLIB_DIR)
@@ -16,7 +19,7 @@ TARGET_STEM = train_model
 TARGET = $(EXEC_DIR)/$(TARGET_STEM)
 
 _ML = machine_learning
-_ML_DEPS = my_logger.h
+_ML_DEPS = my_logger.h my_mnist.h
 
 ML_OBJ_DIR = $(OBJ_DIR)/$(_ML)
 ML_SRC_DIR = $(SRC_DIR)/$(_ML)
@@ -26,6 +29,7 @@ ML_OBJS = $(addprefix $(ML_OBJ_DIR)/, $(_ML_OBJS))
 
 all: $(TARGET)
 	@echo "DLIB is $(DLIB_DIR)"
+	@echo "DLIB_SRC is $(DLIB_SRC)"
 
 $(EXEC_DIR):
 	mkdir -p $@
@@ -34,7 +38,7 @@ $(ML_OBJ_DIR):
 	mkdir -p $@
 
 $(ML_OBJS): $(ML_OBJ_DIR)/%$(OBJ_EXT): $(ML_SRC_DIR)/%$(CPP_EXT) $(DLIB_SRC)$(CPP_EXT) $(ML_DEPS) | $(ML_OBJ_DIR)
-	$(CXX)  $< -c -o $@  $(CFLAGS) -iquote$(ML_SRC_DIR) -Wall 
+	$(CXX)  $< -c -o $@  $(CFLAGS) -iquote$(ML_SRC_DIR) 
 
 $(TARGET): $(SRC_DIR)/$(TARGET_STEM)$(CPP_EXT) $(DLIB_SRC)$(CPP_EXT) $(ML_OBJS) | $(EXEC_DIR)
 	@echo "Building $(TARGET) ..."
@@ -45,5 +49,6 @@ clean:
 	rmdir $(EXEC_DIR) $(ML_OBJ_DIR) $(OBJ_DIR)
 
 run:
-	$(TARGET)
+	@echo "MNIST directory is $(MNIST_DIR)"
+	$(TARGET) $(MNIST_DIR)
 
