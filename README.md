@@ -8,8 +8,11 @@ This example uses [qemu](https://qemu.org) to run a virtual raspberry pi (guest)
 First install and set up the virtual machine, for example using one of the methods in [setup](setup).
 
 ## Install and test a machine-learning library on host
-Where possible, it is often recommended to train machine-learning models on a standard PC (with sufficient RAM and a GPU), and then deploy the trained model on the embedded machine. The code in [setup/machine\_learning/host](setup/machine\_learning/host) will install and test [DLIB](http://dlib.net),  a C++ machine-learning library on the host. 
+Where possible, it is often recommended to train machine-learning models on a standard PC (with sufficient RAM and a GPU), and then deploy the trained model on the embedded machine. First obtain and test the relevant libraries and dataset on the [host](setup/machine\_learning/host). 
 
-# Next step: Train model on host
-A model based on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) can be trained on the host (see [train\_on\_host](train_on_host)).
+# Train model on host
+A neural network is trained on recongition of hand-written digits (see [train\_on\_host](train_on_host)).
+
+# Deploy trained model on virtual machine
+Work in progress
 
