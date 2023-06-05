@@ -15,5 +15,5 @@ Where possible, it is often recommended to train machine-learning models on a st
 A neural network is trained on recongition of hand-written digits (see [train\_on\_host](train_on_host)).
 
 ## Deploy trained model on virtual machine
-First transfer libraries and datasets to [guest](setup/machine_learning/guest).
+First transfer libraries, datasets and trained model parameters to [guest](setup/machine_learning/guest). Next [test on guest](test_on_guest).
 
