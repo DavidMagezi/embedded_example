@@ -1,5 +1,5 @@
 # Test on guest 
-Once the model has been trained on the host, relevant files can be transferred to the guest (see [setting up machine learning on hos](/setup/machine_learning/guest). 
+Once the model has been trained on the host, relevant files can be transferred to the guest (see [setting up machine learning on hos](/setup/machine_learning/guest)). 
 
 ## Usage
 If the virtual machine is offline, manually update the date and time
