@@ -50,5 +50,5 @@ clean:
 
 run:
 	@echo "MNIST directory is $(MNIST_DIR)"
-	$(TARGET) $(MNIST_DIR)
+	$(TARGET) $(MNIST_DIR) /home/$(USER)/test_on_guest/model_parameters/mnist_network.dat
 
